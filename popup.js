@@ -4,16 +4,14 @@ const URL_FMT = '__url__';
 const INITIAL_FMT = `■${TITLE_FMT}
 ${URL_FMT}`;
 
-window.onload = () => {
-  document.querySelector('#Fmt').addEventListener('change', () => {
-    // ==================================
-    // 設定保存
-    // ==================================
-    chrome.storage.sync.set({
-      [FMT_CONFIG_KEY]: document.querySelector('#Fmt').value,
-    });
+document.querySelector('#Fmt').addEventListener('change', () => {
+  // ==================================
+  // 設定保存
+  // ==================================
+  chrome.storage.sync.set({
+    [FMT_CONFIG_KEY]: document.querySelector('#Fmt').value,
   });
-};
+});
 
 chrome.storage.sync.get([FMT_CONFIG_KEY], items => {
   const fmt = items[FMT_CONFIG_KEY] || INITIAL_FMT;
